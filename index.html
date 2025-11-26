@@ -98,6 +98,38 @@ const htmlContent = `-->
         @media (max-width: 640px) {
           .profile-photo-wrapper { width: 140px; height: 140px; }
         }
+        /* Small fixes to prevent overlay and enforce stacking/spacing */
+* { box-sizing: border-box; }
+
+/* Ensure main sections create their own stacking context */
+main > section {
+  position: relative;
+  z-index: 0; /* base stacking */
+}
+
+/* Ensure cards and content sit above background but below header */
+.detail-card, .video-container, .profile-photo-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* Make sure header stays on top */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Ensure flex children don't collapse into each other */
+.flex > * {
+  min-width: 0; /* prevents flex items from overflowing */
+}
+
+/* Safe spacing so sections don't overlap visually */
+section { padding-top: 2rem; padding-bottom: 2rem; }
+
+/* If images cause layout thrash, make sure they don't exceed container */
+img { max-width: 100%; height: auto; display: block; }
     </style>
 </head>
 <body>
