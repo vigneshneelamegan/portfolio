@@ -1,473 +1,285 @@
-<!-- This is a comment import React from 'react';
-
-// NOTE: This component renders the HTML portfolio content directly as a single string 
-// for simplicity, mimicking the structure of the last HTML file we worked on.
-// In a typical React application, this would be refactored into React components.
-
-const htmlContent = `-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vignesh Neelamegan | Product Designer & Hiker</title>
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts and custom styles -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
-    :root {
-      --bg: #f0f4f8;
-      --teal: #0d9488;
-      --indigo: #6366f1;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      margin: 0;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      scroll-behavior: smooth;
-    }
-
-    /* Utility: ensure predictable box model */
-    *, *::before, *::after { box-sizing: border-box; }
-
-    /* Section heading underline */
-    .section-title {
-      position: relative;
-      padding-bottom: 0.5rem;
-      margin-bottom: 2rem;
-      display: inline-block;
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 4px;
-      width: 70px;
-      background-color: var(--teal);
-      border-radius: 9999px;
-    }
-
-    .detail-card {
-      background-color: #ffffff;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      border: 1px solid #e2e8f0;
-    }
-    .detail-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px -5px rgba(17, 24, 39, 0.08), 0 4px 6px -2px rgba(17,24,39,0.04);
-    }
-
-    .social-icon-link:hover svg { color: var(--teal); }
-
-    .video-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    }
-    .video-container iframe {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-    }
-
-    /* Profile photo wrapper — stable layout, circular crop, responsive cap */
-    .profile-photo-wrapper {
-      width: 160px;
-      height: 160px;
-      max-width: 28vw;
-      max-height: 28vw;
-      overflow: hidden;
-      border-radius: 9999px;
-      display: inline-block;
-      flex: 0 0 auto;
-      box-shadow: 0 10px 30px rgba(17,24,39,0.08);
-      background: #f3f4f6;
-    }
-    .profile-photo-wrapper img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center;
-    }
-    @media (max-width: 640px) {
-      .profile-photo-wrapper { width: 140px; height: 140px; }
-    }
-
-    /* Small layout stabilisers */
-    main > section { position: relative; z-index: 0; }
-    .detail-card, .video-container, .profile-photo-wrapper { position: relative; z-index: 1; }
-    header { position: sticky; top: 0; z-index: 1000; }
-    .flex > * { min-width: 0; }
-    img { max-width: 100%; height: auto; display: block; }
-
-    /* Minor responsive adjustments to match Tailwind sizing */
-    @media (min-width: 768px) {
-      .hero-name { font-size: 3.25rem; } /* approx text-7xl */
-      .hero-role { font-size: 1.625rem; } /* approx text-3xl */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vignesh Neelamegan | Senior Business Analyst & Product Owner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .case-study-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
-<body>
+<body class="text-slate-800 bg-white">
 
-  <!-- Header & Navigation -->
-  <header class="sticky top-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm shadow-lg">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-      <a href="#hero" class="text-2xl font-black text-indigo-700 tracking-wider">VIGNESH N.</a>
-
-      <div class="hidden md:flex space-x-6 text-sm font-semibold">
-        <a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-200">About</a>
-        <a href="#blog-insights" class="text-gray-600 hover:text-indigo-600 transition duration-200 font-extrabold text-teal-600">Blog & Insights</a>
-        <a href="#hike-vlogs" class="text-gray-600 hover:text-indigo-600 transition duration-200 font-extrabold text-teal-600">Hike Vlogs</a>
-        <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition duration-200">Projects</a>
-        <a href="#skills" class="text-gray-600 hover:text-indigo-600 transition duration-200">Skills</a>
-        <a href="#experience" class="text-gray-600 hover:text-indigo-600 transition duration-200">Experience</a>
-        <a href="#volunteering" class="text-gray-600 hover:text-indigo-600 transition duration-200">Volunteer</a>
-        <a href="#education" class="text-gray-600 hover:text-indigo-600 transition duration-200">Credentials</a>
-      </div>
-
-      <a href="mailto:vigneshneelamegan@gmail.com" class="hidden md:block bg-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md hover:bg-indigo-700 transition duration-200">
-        Contact Me
-      </a>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="text-xl font-bold tracking-tight uppercase">VIGNESH <span class="text-blue-700">.</span></div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="#about" class="hover:text-blue-700 transition">About</a>
+                <a href="#case-studies" class="hover:text-blue-700 transition">Case Studies</a>
+                <a href="#toolkit" class="hover:text-blue-700 transition">Toolkit</a>
+                <a href="#contact" class="hover:text-blue-700 transition">Contact</a>
+            </div>
+            <a href="mailto:vigneshneelamegan@gmail.com" class="bg-slate-900 text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 transition uppercase tracking-widest">Contact Me</a>
+        </div>
     </nav>
-  </header>
 
-  <!-- Main -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-
-    <!-- Hero -->
-    <section id="hero" class="text-center py-16 sm:py-24 bg-gradient-to-br from-indigo-50 to-cyan-50 rounded-2xl shadow-2xl mb-16">
-      <div class="flex flex-col items-center">
-        <!-- Stable profile wrapper -->
-        <div class="profile-photo-wrapper" role="img" aria-label="Profile picture">
-          <picture>
-            <!-- optional webp if you create it -->
-            <source type="image/webp" srcset="/profile.webp 1x, /profile@2x.webp 2x">
-            <img
-              src="/profile.png"
-              srcset="/profile.png 1x, /profile@2x.png 2x"
-              sizes="(max-width:640px) 140px, 160px"
-              width="160"
-              height="160"
-              alt="Vignesh Neelamegan"
-              loading="eager"
-              decoding="async"
-            />
-          </picture>
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 hero-gradient">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-widest text-blue-700 uppercase bg-blue-50 rounded-full">Product Owner & Business Analyst</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Empowering Businesses with <br><span class="text-blue-700 italic">AI & Agile Design.</span></h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+                13+ years of experience delivering transformative solutions across <strong>Pharmaceuticals, Healthcare, and Logistics</strong>. Specializing in AI-powered automation and Human-Centered Design for global enterprises like GSK and Accenture.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <a href="#case-studies" class="bg-blue-700 text-white px-8 py-4 rounded-lg font-medium shadow-lg hover:bg-blue-800 transition text-center">View Case Studies</a>
+                <a href="https://linkedin.com" target="_blank" class="bg-white text-slate-800 border border-slate-200 px-8 py-4 rounded-lg font-medium hover:bg-slate-50 transition text-center">LinkedIn Profile</a>
+            </div>
         </div>
+    </header>
 
-        <h1 class="hero-name font-black text-gray-900 tracking-tighter mt-6 mb-2">VIGNESH NEELAMEGAN</h1>
-        <p class="hero-role text-cyan-700 mb-8 tracking-wide">Product Designer | Business Analyst | Agile Expert</p>
-
-        <div class="flex flex-wrap justify-center gap-4 text-gray-600 text-sm sm:text-base font-medium mb-10">
-          <span class="flex items-center hover:text-indigo-600 transition duration-200">
-            <svg class="w-4 h-4 mr-1 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"></path></svg>
-            vigneshneelamegan@gmail.com
-          </span>
-
-          <span class="flex items-center hover:text-indigo-600 transition duration-200">
-            <svg class="w-4 h-4 mr-1 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12"></path></svg>
-            +44-07990118211
-          </span>
-
-          <span class="flex items-center hover:text-indigo-600 transition duration-200">
-            <svg class="w-4 h-4 mr-1 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v20"></path></svg>
-            London, UK
-          </span>
+    <!-- Impact Stats -->
+    <section class="py-12 border-b border-slate-100 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-3xl font-bold text-slate-900">13+</div>
+                <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">Years Experience</div>
+            </div>
+            <div>
+                <div class="text-3xl font-bold text-slate-900">60%</div>
+                <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">Manual Effort Reduced</div>
+            </div>
+            <div>
+                <div class="text-3xl font-bold text-slate-900">25%</div>
+                <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">Booking Increases</div>
+            </div>
+            <div>
+                <div class="text-3xl font-bold text-slate-900">30%</div>
+                <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">Revenue Growth Driven</div>
+            </div>
         </div>
-
-        <div class="flex flex-wrap justify-center gap-8 mb-8">
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn Profile" class="social-icon-link text-gray-500 transition duration-300 transform hover:scale-125">
-            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4 3h4v18H4zM10 8h4v13h-4zM20 14v7h-4v-7z"/></svg>
-          </a>
-          <a href="https://facebook.com/yourprofile" target="_blank" aria-label="Facebook Profile" class="social-icon-link text-gray-500 transition duration-300 transform hover:scale-125">
-            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22 12a10 10 0 1 0-11 9.95V14H8v-3h3V9.5c0-2.97 1.79-4.61 4.41-4.61 1.28 0 2.62.23 2.62.23v3h-1.31c-1.29 0-1.69.8-1.69 1.62V11h2.87l-.46 3H16v7.95A10 10 0 0 0 22 12z"/></svg>
-          </a>
-          <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram Profile" class="social-icon-link text-gray-500 transition duration-300 transform hover:scale-125">
-            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/></svg>
-          </a>
-          <a href="https://youtube.com/yourchannel" target="_blank" aria-label="YouTube Channel" class="social-icon-link text-gray-500 transition duration-300 transform hover:scale-125">
-            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10 15l5-3-5-3z"/><path d="M21 8s-.2-1.4-.8-2c-.7-.8-1.5-.8-1.9-.9C16 4.8 12 4.8 12 4.8h-.1S8 4.8 5.8 5.1c-.4 0-1.2.1-1.9.9C3 6.6 3 8 3 8S2.9 9.7 3 11.4c.1 1.7.7 3.4.7 3.4s.2 1.4.8 2c.7.8 1.6.8 2 0 .4-.7 1.9-2 1.9-2s.9.7 4.6.7c3.7 0 4.6-.7 4.6-.7s1.5 1.3 1.9 2c.4.8 1.3.8 2 0 .6-.6.8-2 .8-2s.6-1.8.7-3.4C21 9.7 21 8 21 8z"/></svg>
-          </a>
-          <a href="https://strava.com/yourprofile" target="_blank" aria-label="Strava Profile" class="social-icon-link text-gray-500 transition duration-300 transform hover:scale-125">
-            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 3h3l3 6 3-6h3l-6 12z"/></svg>
-          </a>
-        </div>
-
-        <a href="#about" class="mt-4 inline-block bg-indigo-600 text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-indigo-700 transition duration-300 shadow-xl">
-          Discover My Work &rarr;
-        </a>
-      </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="mb-16 pt-16 -mt-16">
-      <h2 class="section-title text-3xl font-extrabold text-gray-800 uppercase tracking-wider">About</h2>
-      <div class="detail-card p-6 sm:p-10 shadow-xl">
-        <p class="text-2xl font-bold text-indigo-700 mb-4 pb-3 border-b-2 border-indigo-100">Empowering Businesses with AI, Agile, and Human-Centered Design</p>
-        <p class="text-gray-700 leading-relaxed text-lg">Strategic Product Designer and Business Analyst with 13+ years of experience delivering transformative solutions across pharmaceuticals, healthcare, supply chain, and logistics. Experienced in design thinking, AI/product strategy and agile delivery.</p>
-      </div>
+    <!-- Case Studies Preview -->
+    <section id="case-studies" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-4xl font-bold mb-4">Strategic Case Studies</h2>
+                <p class="text-slate-500">Evidence of delivery across regulatory reporting, clinical trials, and global logistics.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- GSK AI Automation -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 case-study-card">
+                    <div class="flex items-center space-x-2 mb-6 text-blue-700 font-bold text-sm tracking-tighter">
+                        <span>AI & AUTOMATION</span>
+                        <span class="text-slate-300">•</span>
+                        <span>GSK</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">AI-Powered Regulatory Reporting</h3>
+                    <p class="text-slate-600 mb-6">Led the design of an LLM-based automation tool reducing manual effort by 60%. Conducted design thinking workshops and defined MVP for GxP-compliant workflows.</p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">FIGMA</span>
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">LLM/AI</span>
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">GxP COMPLIANCE</span>
+                    </div>
+                    <div class="text-sm font-bold text-blue-700">60% Automation Achieved</div>
+                </div>
+
+                <!-- Logistics ERP -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 case-study-card">
+                    <div class="flex items-center space-x-2 mb-6 text-green-700 font-bold text-sm tracking-tighter">
+                        <span>ERP IMPLEMENTATION</span>
+                        <span class="text-slate-300">•</span>
+                        <span>RAMCO</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Logistics & Warehousing Modernization</h3>
+                    <p class="text-slate-600 mb-6">End-to-end implementation for CKB Indonesia within 6 months. Designed mobile-based order management driving a 25% increase in customer bookings.</p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">LOGISTICS ERP</span>
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">UAT LEAD</span>
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">BPMN</span>
+                    </div>
+                    <div class="text-sm font-bold text-green-700">15% Post-Launch Revenue Growth</div>
+                </div>
+
+                <!-- Clinical Supply Chain -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 case-study-card">
+                    <div class="flex items-center space-x-2 mb-6 text-purple-700 font-bold text-sm tracking-tighter">
+                        <span>PRODUCT STRATEGY</span>
+                        <span class="text-slate-300">•</span>
+                        <span>GSK</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Clinical Trial Supply Modernization</h3>
+                    <p class="text-slate-600 mb-6">Replaced legacy systems with integrated solutions for manufacturing and distribution. Managed integrations between COTS and bespoke applications.</p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">SCRUM</span>
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">SUPPLY CHAIN</span>
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">GAP ANALYSIS</span>
+                    </div>
+                    <div class="text-sm font-bold text-purple-700">GSK Contextual Master Award 2023</div>
+                </div>
+
+                <!-- Global Shipping -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 case-study-card">
+                    <div class="flex items-center space-x-2 mb-6 text-orange-700 font-bold text-sm tracking-tighter">
+                        <span>SYSTEM MODERNIZATION</span>
+                        <span class="text-slate-300">•</span>
+                        <span>MSC</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Global Shipping & Multimodal Logistics</h3>
+                    <p class="text-slate-600 mb-6">Designed modernized solutions for the world’s largest vessel operator. Implemented auto-manifestation and multimodal transport optimization.</p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">SQL</span>
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">SDLC</span>
+                        <span class="text-[10px] bg-slate-100 px-2 py-1 rounded">Vessel Sharing</span>
+                    </div>
+                    <div class="text-sm font-bold text-orange-700">30% Revenue Optimization</div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Blog & Insights -->
-    <section id="blog-insights" class="mb-16 pt-16 -mt-16">
-      <h2 class="section-title text-3xl font-extrabold text-gray-800 uppercase tracking-wider">Blog & Insights</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <a href="#" class="detail-card p-6 border-t-8 border-indigo-600 hover:border-indigo-700 block">
-          <p class="text-sm font-semibold text-indigo-500 mb-1">AI & Compliance | Oct 2025</p>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">The Future of GxP: How LLMs Are Automating Regulatory Reports</h3>
-          <p class="text-gray-700 text-sm">A deep dive into the architecture and challenges of using Large Language Models to draft GxP-compliant documents, focusing on efficiency and governance.</p>
-        </a>
-
-        <a href="#" class="detail-card p-6 border-t-8 border-indigo-600 hover:border-indigo-700 block">
-          <p class="text-sm font-semibold text-indigo-500 mb-1">Product Strategy | Sep 2025</p>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">From Legacy to Lean: Modernizing Pharma Supply Chains with Agile</h3>
-          <p class="text-gray-700 text-sm">Explaining how a blended approach of SAFe and core Scrum helped us decommission outdated clinical trial systems and roll out a modern, flexible solution.</p>
-        </a>
-
-        <a href="#" class="detail-card p-6 border-t-8 border-indigo-600 hover:border-indigo-700 block">
-          <p class="text-sm font-semibold text-indigo-500 mb-1">UX & Design | Aug 2025</p>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Empathy Mapping in Enterprise: Designing for the Complex User Journey</h3>
-          <p class="text-gray-700 text-sm">My essential guide to running effective design thinking workshops for B2B enterprise applications.</p>
-        </a>
-      </div>
-      <div class="text-center mt-10">
-        <a href="#" class="inline-flex items-center text-lg font-bold text-indigo-600 hover:text-indigo-800 transition duration-300">Read All Insights &rarr;</a>
-      </div>
+    <!-- Experience Timeline / About -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-4xl font-bold mb-8 text-slate-900">Bridging Business Needs <br>with Technical Excellence</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    I am a Strategic Product Designer and Business Analyst with a passion for leveraging <strong>AI, UX design, and data-driven insights</strong>. Currently, I am focused on innovating regulatory reporting and clinical trial supply solutions using LLM-based automation.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Human-Centered Design</h4>
+                            <p class="text-sm text-slate-500">Expert in design thinking workshops, empathy mapping, and high-fidelity prototyping in Figma.</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Agile Expert</h4>
+                            <p class="text-sm text-slate-500">CSPO and SAFe Practitioner with extensive experience in PI Planning and MVP definition.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100">
+                <h3 class="text-xl font-bold mb-8">Career Journey</h3>
+                <div class="space-y-8 border-l-2 border-slate-200 ml-4 pl-8 relative">
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-700 border-4 border-white"></div>
+                        <div class="text-xs text-blue-700 font-bold uppercase mb-1">2021 — PRESENT</div>
+                        <h4 class="font-bold">Product Designer & Owner (GSK)</h4>
+                        <p class="text-sm text-slate-500 font-medium">Digital Innovator Award Winner 2025</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
+                        <div class="text-xs text-slate-400 font-bold uppercase mb-1">2018 — 2020</div>
+                        <h4 class="font-bold text-slate-600">Business Analyst (Accenture)</h4>
+                        <p class="text-sm text-slate-400 font-medium">Benefits Management Systems (TANF, Medicaid)</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
+                        <div class="text-xs text-slate-400 font-bold uppercase mb-1">2012 — 2018</div>
+                        <h4 class="font-bold text-slate-600">Business Analyst (MSC Tech)</h4>
+                        <p class="text-sm text-slate-400 font-medium">Global Shipping & Logistics Modernization</p>
+                    </div>
+                </div>
+                <div class="mt-10 pt-6 border-t border-slate-200">
+                    <h4 class="font-bold text-sm mb-4">Education</h4>
+                    <p class="text-xs text-slate-500">MBA in Information Systems (Annamalai University)</p>
+                    <p class="text-xs text-slate-500 mt-1">BE in Electronics & Communications</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Hike Vlogs -->
-    <section id="hike-vlogs" class="mb-16 pt-16 -mt-16">
-      <div class="text-center mb-12 bg-gradient-to-r from-teal-50 to-green-50 p-8 rounded-2xl shadow-xl">
-        <h2 class="text-5xl font-black text-gray-900 mb-2">ADVENTURES & VLOGS</h2>
-        <p class="text-xl font-light text-teal-700">Finding Clarity in Nature, One Summit at a Time.</p>
-      </div>
-
-      <h3 class="section-title text-3xl font-extrabold text-gray-800 uppercase tracking-wider mb-8">Featured Video Hikes</h3>
-
-      <div class="grid lg:grid-cols-2 gap-10 mb-16">
-        <div class="detail-card p-6 border-t-8 border-green-600">
-          <div class="video-container mb-4">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <h4 class="text-2xl font-bold text-gray-900 mb-2">The Mystical Trails of Snowdonia, Wales</h4>
-          <p class="text-sm text-gray-500 mb-4">Published: November 2025 | Duration: 15:30</p>
-          <p class="text-gray-700">A challenging but rewarding hike up Mount Snowdon in stunning autumn colors. This vlog covers the key routes, essential gear, and panoramic views.</p>
+    <!-- Toolkit / Skills -->
+    <section id="toolkit" class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-16">The Strategic Toolkit</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div>
+                    <h4 class="text-blue-400 uppercase tracking-widest text-xs font-bold mb-6">Product Design</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li>Figma & Adobe XD</li>
+                        <li>Design Thinking</li>
+                        <li>High/Low Fidelity Prototyping</li>
+                        <li>User Research & Persona Mapping</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-blue-400 uppercase tracking-widest text-xs font-bold mb-6">Business Analysis</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li>Requirements (URS/SRS)</li>
+                        <li>BPMN & Process Mapping</li>
+                        <li>Gap Analysis & Traceability</li>
+                        <li>UAT Planning & Execution</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-blue-400 uppercase tracking-widest text-xs font-bold mb-6">Agile & Delivery</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li>CSPO Certified</li>
+                        <li>SAFe Practitioner</li>
+                        <li>Jira & Azure Boards</li>
+                        <li>MVP & Backlog Refinement</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-blue-400 uppercase tracking-widest text-xs font-bold mb-6">Data & Tech</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li>SQL & Reporting</li>
+                        <li>Power BI & Tableau</li>
+                        <li>AI & LLM Implementation</li>
+                        <li>GxP Standards</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-        <div class="detail-card p-6 border-t-8 border-green-600">
-          <div class="video-container mb-4">
-            <iframe src="https://www.youtube.com/embed/MhH5sX_i3f0?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <h4 class="text-2xl font-bold text-gray-900 mb-2">Coastal Paths of the Jurassic Coast, Dorset</h4>
-          <p class="text-sm text-gray-500 mb-4">Published: October 2025 | Duration: 10:45</p>
-          <p class="text-gray-700">Exploring the ancient geology and breathtaking cliffs of the UK's stunning Jurassic Coast.</p>
-        </div>
-      </div>
-
-      <h3 class="section-title text-3xl font-extrabold text-gray-800 uppercase tracking-wider mb-8">Photo Gallery: Recent Treks</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        <div class="detail-card overflow-hidden">
-          <img src="https://placehold.co/600x400/22c55e/ffffff?text=Peak+District" alt="Hiking photo 1" class="w-full h-auto object-cover transition duration-300 hover:scale-105">
-          <p class="p-2 text-sm text-center text-gray-600 font-medium">Sunrise at Mam Tor</p>
-        </div>
-        <div class="detail-card overflow-hidden">
-          <img src="https://placehold.co/600x400/06b6d4/ffffff?text=Lake+District" alt="Hiking photo 2" class="w-full h-auto object-cover transition duration-300 hover:scale-105">
-          <p class="p-2 text-sm text-center text-gray-600 font-medium">Grasmere Shoreline</p>
-        </div>
-        <div class="detail-card overflow-hidden">
-          <img src="https://placehold.co/600x400/6366f1/ffffff?text=Scottish+Highlands" alt="Hiking photo 3" class="w-full h-auto object-cover transition duration-300 hover:scale-105">
-          <p class="p-2 text-sm text-center text-gray-600 font-medium">Isle of Skye Mist</p>
-        </div>
-        <div class="detail-card overflow-hidden">
-          <img src="https://placehold.co/600x400/f97316/ffffff?text=Epping+Forest" alt="Hiking photo 4" class="w-full h-auto object-cover transition duration-300 hover:scale-105">
-          <p class="p-2 text-sm text-center text-gray-600 font-medium">Local Forest Walk</p>
-        </div>
-      </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="mb-16 pt-16 -mt-16">
-      <h2 class="section-title text-3xl font-extrabold text-gray-800 uppercase tracking-wider">Featured Projects</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="detail-card p-6 border-t-8 border-teal-500 hover:border-teal-600">
-          <h3 class="text-2xl font-bold text-gray-900 mb-2">AI-Powered Regulatory Reporting Automation</h3>
-          <p class="text-lg font-medium text-teal-600 mb-4">Role: Product Designer | GSK (via TCS)</p>
-          <ul class="list-disc ml-6 space-y-2 text-gray-700">
-            <li><strong>Objective:</strong> Led design and delivery of an LLM-powered tool to automate dynamic and static regulatory report generation.</li>
-            <li><strong>Design:</strong> Conducted design thinking workshops and produced high-fidelity Figma designs for user-centric interfaces.</li>
-            <li><strong>Impact:</strong> Achieved a significant reduction in manual effort.</li>
-            <li><strong>Delivery:</strong> Defined MVP scope, managed backlog, and ensured compliant documentation.</li>
-          </ul>
+    <!-- Footer / Contact -->
+    <footer id="contact" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-8">Let's Connect</h2>
+            <p class="text-slate-500 mb-10 text-lg">London-based professional open to strategic leadership roles in Product and Business Analysis.</p>
+            <div class="space-y-4">
+                <a href="mailto:vigneshneelamegan@gmail.com" class="block text-2xl font-bold text-blue-700 hover:text-slate-900 transition underline underline-offset-8">vigneshneelamegan@gmail.com</a>
+                <p class="text-slate-900 font-semibold">+44-07990118211</p>
+                <div class="flex justify-center space-x-6 mt-8">
+                    <a href="#" class="text-slate-400 hover:text-slate-900 font-bold tracking-widest text-xs">LINKEDIN</a>
+                    <a href="#" class="text-slate-400 hover:text-slate-900 font-bold tracking-widest text-xs">DOWNLOAD CV</a>
+                </div>
+            </div>
+            <div class="mt-20 pt-8 border-t border-slate-100 text-xs text-slate-400 uppercase tracking-widest">
+                &copy; 2025 VIGNESH NEELAMEGAN | STRATEGIC DELIVERY
+            </div>
         </div>
-        <div class="detail-card p-6 border-t-8 border-teal-500 hover:border-teal-600">
-          <h3 class="text-2xl font-bold text-gray-900 mb-2">Clinical Trial Supply Chain Modernization</h3>
-          <p class="text-lg font-medium text-teal-600 mb-4">Role: Product Owner | GSK (via TCS)</p>
-          <ul class="list-disc ml-6 space-y-2 text-gray-700">
-            <li><strong>Objective:</strong> Owned product strategy for replacing legacy clinical trial supply chain systems.</li>
-            <li><strong>Analysis:</strong> Conducted gap analysis and process mapping workshops.</li>
-            <li><strong>Outcome:</strong> Modernized enterprise systems, improving operational efficiency and compliance.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="mb-16 pt-16 -mt-16">
-      <h2 class="section-title text-3xl font-extrabold text-gray-800 uppercase tracking-wider">Core Skills & Expertise</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="detail-card p-6 border-l-4 border-indigo-500">
-          <h3 class="text-xl font-bold text-indigo-700 mb-3 flex items-center">Product Design & UX</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">Wireframing</span>
-            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">Design Thinking</span>
-            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">Figma</span>
-          </div>
-        </div>
-        <div class="detail-card p-6 border-l-4 border-green-500">
-          <h3 class="text-xl font-bold text-green-700 mb-3 flex items-center">Business Analysis</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Requirements</span>
-            <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Gap Analysis</span>
-            <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">SQL</span>
-          </div>
-        </div>
-        <div class="detail-card p-6 border-l-4 border-orange-500">
-          <h3 class="text-xl font-bold text-orange-700 mb-3 flex items-center">Agile & Delivery</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">CSPO</span>
-            <span class="bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">Scrum</span>
-            <span class="bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">MVP</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="mb-16 pt-16 -mt-16">
-      <h2 class="section-title text-3xl font-extrabold text-gray-800 uppercase tracking-wider">Professional Experience</h2>
-      <div class="space-y-8">
-        <div class="detail-card p-6 shadow-md border-b-4 border-indigo-200">
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
-            <h3 class="text-2xl font-bold text-indigo-700">Product Designer / Business Analyst</h3>
-            <span class="text-sm font-semibold text-white bg-indigo-500 px-3 py-1 rounded-full mt-2 sm:mt-0 shadow-sm">May 2021 – Present</span>
-          </div>
-          <p class="text-xl font-medium text-gray-700 mb-4">TCS (Client: GSK)</p>
-          <ul class="list-disc ml-6 space-y-2 text-gray-600 leading-relaxed">
-            <li>Orchestrated the design and delivery of an LLM-powered tool to automate complex regulatory reporting processes.</li>
-            <li>Defined MVP scope, produced high-fidelity designs and GxP documentation.</li>
-          </ul>
-        </div>
-
-        <div class="detail-card p-6 shadow-md border-b-4 border-indigo-200">
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
-            <h3 class="text-2xl font-semibold text-gray-900">Functional Consultant</h3>
-            <span class="text-sm font-semibold text-white bg-indigo-500 px-3 py-1 rounded-full mt-2 sm:mt-0 shadow-sm">Nov 2020 – Apr 2021</span>
-          </div>
-          <p class="text-lg font-medium text-gray-700 mb-4">Ramco Systems</p>
-          <ul class="list-disc ml-6 space-y-2 text-gray-600 leading-relaxed">
-            <li>Delivered end-to-end implementations, improving revenue and operations.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Volunteering & Community -->
-    <section id="volunteering" class="mb-16 pt-16 -mt-16">
-      <h2 class="section-title text-3xl font-extrabold text-gray-800 uppercase tracking-wider">Volunteering & Community</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="detail-card p-6 border-t-8 border-teal-500 hover:border-teal-600">
-          <h3 class="text-2xl font-bold text-gray-900 mb-2">Committee Member & Web master</h3>
-          <p class="text-lg font-medium text-teal-600 mb-4">Stag Walkers Group (Hertfordshire)</p>
-          <ul class="list-disc ml-6 space-y-2 text-gray-700">
-            <li>Manage digital presence and support local hikes.</li>
-          </ul>
-        </div>
-
-        <div class="detail-card p-6 border-t-8 border-teal-500 hover:border-teal-600">
-          <h3 class="text-2xl font-bold text-gray-900 mb-2">Member & Advocate</h3>
-          <p class="text-lg font-medium text-teal-600 mb-4">The Ramblers Charity (UK)</p>
-          <ul class="list-disc ml-6 space-y-2 text-gray-700">
-            <li>Support footpath protection and community walking initiatives.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education & Recognition -->
-    <section id="education" class="mb-16 pt-16 -mt-16">
-      <h2 class="section-title text-3xl font-extrabold text-gray-800 uppercase tracking-wider">Education & Recognition</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="detail-card p-6 border-t-8 border-yellow-500">
-          <h3 class="text-xl font-bold text-yellow-700 mb-3">Academic Background</h3>
-          <ul class="space-y-3 text-gray-700">
-            <li><p class="font-bold">MBA - Information Systems</p><p class="text-sm text-gray-500">Annamalai University (2021 – 2023)</p></li>
-            <li><p class="font-bold">BE - Electronics & Communications</p><p class="text-sm text-gray-500">Annamalai University (2007 – 2011)</p></li>
-          </ul>
-        </div>
-
-        <div class="detail-card p-6 border-t-8 border-pink-500">
-          <h3 class="text-xl font-bold text-pink-700 mb-3">Key Certifications</h3>
-          <ul class="space-y-3 text-gray-700">
-            <li><p class="font-bold">CSPO</p><p class="text-sm text-gray-500">Scrum Alliance</p></li>
-            <li><p class="font-bold">SAFe Practitioner</p><p class="text-sm text-gray-500">Scaled Agile</p></li>
-          </ul>
-        </div>
-
-        <div class="detail-card p-6 border-t-8 border-cyan-500">
-          <h3 class="text-xl font-bold text-cyan-700 mb-3">Awards & Recognition</h3>
-          <ul class="space-y-3 text-gray-700">
-            <li><p class="font-bold">Digital Innovator Award</p><p class="text-sm text-gray-500">For automation idea (Aug 2025)</p></li>
-            <li><p class="font-bold">Contextual Master Award</p><p class="text-sm text-gray-500">TCS (Dec 2023)</p></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white mt-16 shadow-inner">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
-      <p class="text-xl font-bold text-teal-400 mb-2">Let's Connect.</p>
-      <p class="text-sm text-gray-400 mb-6">Driven by Design, Data, and Delivery.</p>
-
-      <div class="flex justify-center space-x-6 text-lg">
-        <a href="mailto:vigneshneelamegan@gmail.com" class="hover:text-indigo-400 transition duration-150">Email</a>
-        <span class="text-gray-600">|</span>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="hover:text-indigo-400 transition duration-150">LinkedIn</a>
-        <span class="text-gray-600">|</span>
-        <a href="#hero" class="hover:text-indigo-400 transition duration-150">Top</a>
-      </div>
-
-      <p class="text-xs text-gray-500 mt-8">&copy; 2025 Vignesh Neelamegan. Product Portfolio & Adventures.</p>
-    </div>
-  </footer>
+    </footer>
 
 </body>
 </html>
-`;
-const App = () => {
-  return (
-    // Render the HTML structure from the string.
-    <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-  );
-};
-
-export default App;
